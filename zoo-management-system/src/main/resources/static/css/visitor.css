@@ -1,0 +1,486 @@
+/* 游客页面专属样式 */
+/* 背景装饰元素 */
+.bg-decor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.decor-item {
+    position: absolute;
+    font-size: 35px;
+    animation: float 12s ease-in-out infinite;
+    opacity: 0.8;
+}
+/* 绿粉交替装饰元素 */
+.paw1 {
+    top: 20%; left: 10%; animation-delay: 0s;
+    color: rgba(152, 251, 152, 0.1); /* 淡草绿 */
+}
+.leaf1 {
+    top: 60%; right: 15%; animation-delay: 3s;
+    color: rgba(255, 107, 139, 0.1); /* 原浅粉 */
+}
+.flower1 {
+    top: 30%; right: 20%; animation-delay: 1s;
+    color: rgba(176, 224, 230, 0.1); /* 淡青绿 */
+}
+.seedling1 {
+    bottom: 20%; left: 80%; animation-delay: 5s;
+    color: rgba(255, 217, 226, 0.1); /* 极浅粉 */
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(15px, -15px) rotate(8deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* 核心布局：轮播图左 + 动物列表右 */
+.main-content-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 25px;
+    width: 100%;
+    height: calc(100vh - 180px);
+    overflow: hidden;
+}
+
+/* 左侧轮播图容器 */
+.carousel-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* 轮播阴影：绿粉混合 */
+    box-shadow: 0 5px 15px rgba(152, 251, 152, 0.1), 0 3px 10px rgba(255, 107, 139, 0.08);
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    cursor: zoom-in;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    /* 激活点：绿粉渐变 */
+    background: linear-gradient(45deg, #98fb98, #ff6b8b);
+    transform: scale(1.2);
+}
+
+/* 轮播控制按钮 */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #3cb371; /* 草绿主色 */
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-control.prev { left: 15px; }
+.carousel-control.next { right: 15px; }
+
+.carousel-control:hover {
+    /* 按钮hover：绿粉渐变背景 */
+    background: linear-gradient(45deg, #98fb98, #ff6b8b);
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 右侧动物列表容器 */
+.animals-list-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 标题样式 */
+.title {
+    font-size: 24px;
+    color: #095a31; /* 深绿主标题 */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+}
+
+.title-decor {
+    display: flex;
+    gap: 10px;
+    /* 标题装饰：绿粉混合 */
+    color: rgba(152, 251, 152, 0.2);
+}
+.title-decor i:nth-child(2) {
+    color: rgba(255, 107, 139, 0.2); /* 第二个装饰用浅粉 */
+}
+
+.title-decor i {
+    animation: bounce 3s ease-in-out infinite;
+}
+
+.title-decor i:nth-child(1) { animation-delay: 0s; }
+.title-decor i:nth-child(2) { animation-delay: 1s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 核心：动物横向排列+滚动条 */
+.animals-horizontal-scroll {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    /* 横向滚动 */
+    overflow-x: auto;
+    /* 隐藏纵向滚动条 */
+    overflow-y: hidden;
+    /* 滚动条位置调整 */
+    padding-bottom: 15px;
+    flex: 1;
+}
+
+/* 横向滚动条美化 - 绿粉混合 */
+.animals-horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.animals-horizontal-scroll::-webkit-scrollbar-thumb {
+    /* 滚动条滑块：浅绿底+浅粉调 */
+    background-color: #d0f0d0;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.animals-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+    /* hover时渐变 */
+    background: linear-gradient(90deg, #98fb98, #ff6b8b);
+}
+
+.animals-horizontal-scroll::-webkit-scrollbar-track {
+    /* 滚动条轨道：极浅绿+浅粉 */
+    background-color: #f8fbf9;
+    border-radius: 4px;
+}
+
+/* 动物卡片样式（纵向排列：图片+介绍） */
+.animal-card {
+    min-width: 220px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    /* 卡片阴影：绿粉混合 */
+    box-shadow: 0 3px 12px rgba(152, 251, 152, 0.08), 0 2px 8px rgba(255, 107, 139, 0.05);
+    transition: all 0.3s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+    /* hover阴影强化 */
+    box-shadow: 0 8px 20px rgba(152, 251, 152, 0.12), 0 4px 12px rgba(255, 107, 139, 0.08);
+}
+
+.animal-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: all 0.3s ease;
+}
+
+.animal-card:hover img {
+    transform: scale(1.05);
+}
+
+.animal-card-content {
+    padding: 15px;
+}
+
+.animal-card h3 {
+    /* 卡片标题：绿主粉辅 */
+    color: #3cb371;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+/* 偶数卡片标题用浅粉，交替更和谐 */
+.animal-card:nth-child(even) h3 {
+    color: #ff6b8b;
+}
+
+.animal-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 横向加载状态 */
+.loading-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* 加载文字：绿粉混合 */
+    color: #a8daba;
+}
+
+.loading-horizontal i {
+    font-size: 30px;
+    margin-bottom: 10px;
+    animation: spin 2s linear infinite;
+    color: #ff8fa3; /* 加载图标用浅粉 */
+}
+
+.loading-horizontal p {
+    font-size: 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 图片放大预览功能 */
+.image-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 50px;
+}
+
+.image-preview.active {
+    display: flex;
+}
+
+.preview-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.preview-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preview-close:hover {
+    /* 关闭按钮hover：浅绿 */
+    color: #98fb98;
+    transform: scale(1.2);
+}
+
+.zoom-img {
+    transition: all 0.3s ease;
+}
+
+/* 园区地图相关样式（绿粉混合） */
+.map-container {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.zoo-map {
+    width: 100%;
+    height: auto;
+}
+
+.map-hotspot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    /* 地图热点：绿粉混合 */
+    background-color: rgba(152, 251, 152, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(152, 251, 152, 0.4), 0 0 5px rgba(255, 107, 139, 0.3);
+    transition: all 0.3s ease;
+}
+/* 偶数热点用浅粉 */
+.map-hotspot:nth-child(even) {
+    background-color: rgba(255, 107, 139, 0.7);
+    box-shadow: 0 0 10px rgba(255, 107, 139, 0.4), 0 0 5px rgba(152, 251, 152, 0.3);
+}
+
+.map-hotspot:hover {
+    transform: scale(1.2);
+    /* hover统一渐变 */
+    background: linear-gradient(45deg, #98fb98, #ff6b8b);
+    box-shadow: 0 0 15px rgba(152, 251, 152, 0.5), 0 0 10px rgba(255, 107, 139, 0.4);
+}
+
+/* 园区详情相关样式（保留原有） */
+.park-detail {
+    margin-top: 20px;
+}
+
+.park-detail img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+.park-detail p {
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .main-content-wrapper {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    .carousel-wrapper {
+        height: 400px;
+        margin-bottom: 20px;
+    }
+
+    .animals-list-wrapper {
+        height: auto;
+    }
+
+    .animals-horizontal-scroll {
+        overflow-x: auto;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-wrapper {
+        height: 300px;
+    }
+
+    .title {
+        font-size: 22px;
+        justify-content: center;
+    }
+
+    .animal-card {
+        min-width: 180px;
+    }
+
+    .animal-card img {
+        height: 150px;
+    }
+}
+
+/* 图片预览优化样式 - 绿粉hover效果 */
+.image-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.image-preview.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.preview-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.preview-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+.preview-close:hover {
+    color: #98fb98; /* 浅绿hover */
+    transform: scale(1.2);
+}

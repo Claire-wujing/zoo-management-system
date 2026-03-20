@@ -1,0 +1,308 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comic Sans MS", "幼圆", sans-serif;  /* 可爱字体 */
+}
+
+body {
+    /* 浅粉+浅绿混合背景：更柔和的基底 */
+    background-color: #f5f9f7;
+    color: #333;
+}
+
+/* 可爱按钮样式（移除所有动画/过渡） */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 30px;  /* 圆角 */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    /* 移除transition过渡动画 */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* 移除btn:hover动画 */
+.btn:hover {
+    transform: none !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1) !important;
+}
+
+.btn-primary {
+    /* 粉色主按钮：保留原有粉色，微调更柔和 */
+    background-color: #ff9bb3;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #ff9bb3 !important; /* 悬浮不换色 */
+}
+
+.btn-secondary {
+    /* 浅蓝色按钮：加入绿调，变成浅蓝绿 */
+    background-color: #98d9c2;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #98d9c2 !important; /* 悬浮不换色 */
+}
+
+.btn-success {
+    /* 成功按钮：调整为清新浅绿，呼应主题 */
+    background-color: #98fb98;
+    color: white;
+}
+.btn-success:hover {
+    background-color: #98fb98 !important; /* 悬浮不换色 */
+}
+
+/* 新增绿色按钮：补充三色体系 */
+.btn-green {
+    background-color: #66cdaa;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+.btn-green:hover {
+    background-color: #66cdaa !important;
+    transform: none !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1) !important;
+}
+
+/* 输入框样式（移除过渡/聚焦动画） */
+.input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    /* 边框：粉+绿混合，更柔和 */
+    border: 2px solid #e8f0ec;
+    border-radius: 20px;  /* 圆角 */
+    font-size: 16px;
+    /* 移除transition过渡动画 */
+}
+
+.input:focus {
+    outline: none;
+    /* 聚焦边框：粉绿渐变感 */
+    border-color: #88e0b0;
+    box-shadow: none !important;  /* 移除发光效果 */
+}
+
+/* 卡片样式（移除所有动画/过渡） */
+.card {
+    background-color: white;
+    border-radius: 20px;  /* 大圆角 */
+    /* 阴影：加入绿调，更柔和 */
+    box-shadow: 0 5px 15px rgba(152,251,152,0.08);
+    padding: 20px;
+    margin: 15px;
+    /* 轻微绿调边框，提升精致感 */
+    border: 1px solid #f0fbf5;
+    /* 移除transition过渡动画 */
+}
+
+/* 移除card:hover动画 */
+.card:hover {
+    transform: none !important;
+    box-shadow: 0 5px 15px rgba(152,251,152,0.08) !important;
+}
+
+/* 标题样式（移除弹跳动画） */
+.title {
+    /* 标题：粉绿渐变文字，核心交织效果 */
+    background: linear-gradient(90deg, #ff6b8b, #095a31);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 28px;
+    /* 阴影：粉+绿混合 */
+    text-shadow: 2px 2px 4px rgba(255,107,139,0.1), 1px 1px 3px rgba(152,251,152,0.08);
+    /* 移除animation弹跳动画 */
+}
+
+/* 导航栏样式（移除hover动画） */
+.nav {
+    background-color: white;
+    padding: 15px 30px;
+    /* 阴影：加入绿调 */
+    box-shadow: 0 2px 10px rgba(152,251,152,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 轻微绿调背景 */
+    background-color: #f8fffa;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    /* 保留深绿logo文字，强化绿调 */
+    color: #095a31;
+}
+
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    /* 移除滤镜：保留图标原有颜色 */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    /* 导航文字：偏绿的灰色，更和谐 */
+    color: #5a7d6b;
+    font-size: 18px;
+    font-weight: bold;
+    /* 移除transition过渡动画 */
+    position: relative;
+}
+
+/* 移除导航hover变色 */
+.nav-menu a:hover {
+    color: #5a7d6b !important;
+}
+
+/* 移除导航下划线动画 */
+.nav-menu a::after {
+    display: none !important;
+}
+
+/* 侧边栏样式（移除hover动画） */
+.sidebar {
+    width: 250px;
+    /* 侧边栏背景：浅绿调 */
+    background-color: #f5f9f7;
+    height: calc(100vh - 70px);
+    /* 阴影：绿调 */
+    box-shadow: 2px 0 10px rgba(152,251,152,0.05);
+    padding: 20px;
+    float: left;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin: 20px 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    /* 侧边栏文字：偏绿 */
+    color: #5a7d6b;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 15px;
+    /* 移除transition过渡动画 */
+}
+
+/* 移除侧边栏hover效果 */
+.sidebar-menu a:hover {
+    background-color: #f0fbf5 !important;
+    color: #5a7d6b !important;
+}
+
+.sidebar-menu img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    /* 移除滤镜：保留图标原有颜色 */
+}
+
+/* 内容区样式 */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* 网格布局 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    /* 网格背景：轻微绿调 */
+    padding: 10px;
+    background-color: #f5f9f7;
+    border-radius: 20px;
+}
+
+/* 动物卡片样式 */
+.animal-card {
+    text-align: center;
+    /* 动物卡片：加入绿调边框 */
+    border: 1px solid #e8f8ef;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+}
+
+.animal-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    /* 移除滤镜：保留图片原有颜色 */
+}
+
+.animal-card h3 {
+    /* 动物卡片标题：粉绿交替 */
+    background: linear-gradient(90deg, #ff6b8b, #66cdaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+.animal-card p {
+    /* 卡片文字：偏绿的灰色 */
+    color: #5a7d6b;
+    line-height: 1.6;
+}
+
+/* ========== 核心：删除所有渐入/动画关键帧 ========== */
+.fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* 响应式布局（手机适配） */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        float: none;
+        background-color: #f8fffa;
+    }
+    .content {
+        margin-left: 0;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+        background-color: #f5f9f7;
+    }
+}

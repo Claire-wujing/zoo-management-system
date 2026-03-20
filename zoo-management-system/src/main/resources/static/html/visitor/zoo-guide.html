@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>园区导览 - 森屿动物园</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/visitor.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 小朋友！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 动物园首页</a></li>
+        <li><a href="zoo-guide.html"><img src="../../images/icons/map.png" alt="园区导览"> 园区导览</a></li>
+    </ul>
+
+    <div class="content">
+        <div class="card fade-in">
+            <h3 class="card-title">动物园地图 🌳</h3>
+            <div class="map-container">
+                <img src="../../images/park/zoo-map.jpg" alt="动物园地图" class="zoo-map">
+                <div class="map-hotspot" style="top: 30%; left: 40%;" data-park-id="1"></div>
+                <div class="map-hotspot" style="top: 50%; left: 60%;" data-park-id="2"></div>
+                <div class="map-hotspot" style="top: 70%; left: 30%;" data-park-id="3"></div>
+                <div class="map-hotspot" style="top: 40%; left: 70%;" data-park-id="4"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/visitor.js"></script>
+</body>
+</html>

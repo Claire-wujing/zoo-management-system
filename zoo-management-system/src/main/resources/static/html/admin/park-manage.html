@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>园区管理 - 动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 园长！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="animal-manage.html"><img src="../../images/icons/animal.png" alt="动物管理"> 动物管理</a></li>
+        <li><a href="park-manage.html"><img src="../../images/icons/park.png" alt="园区管理"> 园区管理</a></li>
+        <li><a href="user-manage.html"><img src="../../images/icons/user.png" alt="用户管理"> 用户管理</a></li>
+    </ul>
+
+    <div class="content">
+        <h2 class="title">🏞️ 园区管理</h2>
+
+        <!-- 添加园区表单 -->
+        <div class="card fade-in">
+            <h3 class="card-title">添加新园区 🌳</h3>
+            <form id="addParkForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>园区名称</label>
+                        <input type="text" name="name" class="input" placeholder="比如：熊猫馆" required>
+                    </div>
+                    <div class="form-group">
+                        <label>园区位置</label>
+                        <input type="text" name="location" class="input" placeholder="比如：园区A区1号" required>
+                    </div>
+                    <div class="form-group">
+                        <label>园区介绍</label>
+                        <textarea name="intro" class="input" rows="3" placeholder="描述园区的特色～"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>图片地址</label>
+                        <input type="text" name="imageUrl" class="input" placeholder="比如：/images/park/panda.jpg">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">添加园区 🏡</button>
+            </form>
+        </div>
+
+        <!-- 编辑园区表单（默认隐藏） -->
+        <div class="card fade-in" id="editParkCard" style="display: none; margin-top: 20px;">
+            <h3 class="card-title">编辑园区 🌳</h3>
+            <form id="editParkForm">
+                <input type="hidden" name="id" id="editParkId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>园区名称</label>
+                        <input type="text" name="name" class="input" placeholder="比如：熊猫馆" required id="editParkName">
+                    </div>
+                    <div class="form-group">
+                        <label>园区位置</label>
+                        <input type="text" name="location" class="input" placeholder="比如：园区A区1号" required id="editParkLocation">
+                    </div>
+                    <div class="form-group">
+                        <label>园区介绍</label>
+                        <textarea name="intro" class="input" rows="3" placeholder="描述园区的特色～" id="editParkIntro"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>图片地址</label>
+                        <input type="text" name="imageUrl" class="input" placeholder="比如：/images/park/panda.jpg" id="editParkImageUrl">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary">保存修改 🏡</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 10px;" id="cancelEditPark">取消</button>
+            </form>
+        </div>
+
+        <!-- 园区列表 -->
+        <div class="card fade-in" style="animation-delay: 0.2s; margin-top: 20px;">
+            <h3 class="card-title">园区列表 🗺️</h3>
+            <div id="parkList" class="loading">加载中...</div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

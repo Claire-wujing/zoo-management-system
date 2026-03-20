@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动物管理 - 森屿动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 园长！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<!-- 主体内容 -->
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="animal-manage.html"><img src="../../images/icons/animal.png" alt="动物管理"> 动物管理</a></li>
+        <li><a href="park-manage.html"><img src="../../images/icons/park.png" alt="园区管理"> 园区管理</a></li>
+        <li><a href="user-manage.html"><img src="../../images/icons/user.png" alt="用户管理"> 用户管理</a></li>
+    </ul>
+
+    <div class="content">
+        <h2 class="title">🐼 森屿动物管理</h2>
+
+        <!-- 添加动物表单 -->
+        <div class="card fade-in">
+            <h3 class="card-title">添加新动物 🐥</h3>
+            <form id="addAnimalForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>动物名称</label>
+                        <input type="text" name="name" class="input" placeholder="比如：团团" required>
+                    </div>
+                    <div class="form-group">
+                        <label>动物类型</label>
+                        <input type="text" name="type" class="input" placeholder="比如：哺乳动物" required>
+                    </div>
+                    <div class="form-group">
+                        <label>年龄</label>
+                        <input type="number" name="age" class="input" min="0" placeholder="比如：3" required>
+                    </div>
+                    <div class="form-group">
+                        <label>所属园区</label>
+                        <select name="parkId" class="input" required id="parkSelect">
+                            <option value="">选择园区</option>
+                            <!-- 园区选项通过JS加载 -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>动物介绍</label>
+                        <textarea name="intro" class="input" rows="3" placeholder="描述动物的可爱之处～"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>图片地址</label>
+                        <input type="text" name="imageUrl" class="input" placeholder="比如：/images/animal/tuantuan.jpg">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">添加动物 🐾</button>
+            </form>
+        </div>
+
+        <!-- 编辑动物表单（默认隐藏） -->
+        <div class="card fade-in" id="editAnimalCard" style="display: none; margin-top: 20px;">
+            <h3 class="card-title">编辑动物 🐥</h3>
+            <form id="editAnimalForm">
+                <input type="hidden" name="id" id="editAnimalId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>动物名称</label>
+                        <input type="text" name="name" class="input" placeholder="比如：团团" required id="editAnimalName">
+                    </div>
+                    <div class="form-group">
+                        <label>动物类型</label>
+                        <input type="text" name="type" class="input" placeholder="比如：哺乳动物" required id="editAnimalType">
+                    </div>
+                    <div class="form-group">
+                        <label>年龄</label>
+                        <input type="number" name="age" class="input" min="0" placeholder="比如：3" required id="editAnimalAge">
+                    </div>
+                    <div class="form-group">
+                        <label>所属园区</label>
+                        <select name="parkId" class="input" required id="editParkSelect">
+                            <option value="">选择园区</option>
+                            <!-- 园区选项通过JS加载 -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>动物介绍</label>
+                        <textarea name="intro" class="input" rows="3" placeholder="描述动物的可爱之处～" id="editAnimalIntro"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>图片地址</label>
+                        <input type="text" name="imageUrl" class="input" placeholder="比如：/images/animal/tuantuan.jpg" id="editAnimalImageUrl">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary">保存修改 🐾</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 10px;" id="cancelEditAnimal">取消</button>
+            </form>
+        </div>
+
+        <!-- 动物列表 -->
+        <div class="card fade-in" style="animation-delay: 0.2s; margin-top: 20px;">
+            <h3 class="card-title">动物列表 🦁</h3>
+            <div id="animalList" class="loading">加载中...</div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

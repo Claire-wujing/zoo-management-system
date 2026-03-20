@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理 - 动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 园长！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="animal-manage.html"><img src="../../images/icons/animal.png" alt="动物管理"> 动物管理</a></li>
+        <li><a href="park-manage.html"><img src="../../images/icons/park.png" alt="园区管理"> 园区管理</a></li>
+        <li><a href="user-manage.html"><img src="../../images/icons/user.png" alt="用户管理"> 用户管理</a></li>
+    </ul>
+
+    <div class="content">
+        <h2 class="title">👥 用户管理</h2>
+
+        <!-- 添加用户表单 -->
+        <div class="card fade-in">
+            <h3 class="card-title">添加新用户 🐶</h3>
+            <form id="addUserForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" name="username" class="input" placeholder="唯一标识" required>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" name="password" class="input" placeholder="默认123456" required>
+                    </div>
+                    <div class="form-group">
+                        <label>角色</label>
+                        <select name="role" class="input" required>
+                            <option value="admin">管理员</option>
+                            <option value="keeper">饲养员</option>
+                            <option value="visitor">游客</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>昵称</label>
+                        <input type="text" name="nickname" class="input" placeholder="可爱的昵称" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">添加用户 🐾</button>
+            </form>
+        </div>
+
+        <!-- 编辑用户表单（默认隐藏） -->
+        <div class="card fade-in" id="editUserCard" style="display: none; margin-top: 20px;">
+            <h3 class="card-title">编辑用户 🐶</h3>
+            <form id="editUserForm">
+                <input type="hidden" name="id" id="editUserId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" name="username" class="input" placeholder="唯一标识" required id="editUsername" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" name="password" class="input" placeholder="留空则不修改" id="editPassword">
+                    </div>
+                    <div class="form-group">
+                        <label>角色</label>
+                        <select name="role" class="input" required id="editRole">
+                            <option value="admin">管理员</option>
+                            <option value="keeper">饲养员</option>
+                            <option value="visitor">游客</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>昵称</label>
+                        <input type="text" name="nickname" class="input" placeholder="可爱的昵称" required id="editNickname">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary">保存修改 🐾</button>
+                <button type="button" class="btn btn-primary" style="margin-left: 10px;" id="cancelEditUser">取消</button>
+            </form>
+        </div>
+
+        <!-- 用户列表 -->
+        <div class="card fade-in" style="animation-delay: 0.2s; margin-top: 20px;">
+            <h3 class="card-title">用户列表 🧑‍🦰</h3>
+            <div id="userList" class="loading">加载中...</div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

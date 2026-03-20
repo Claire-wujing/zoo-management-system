@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饲养员首页 - 森屿动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <style>
+        .record-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .record-actions .btn {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="feeding-record.html"><img src="../../images/icons/feed.png" alt="喂食记录"> 喂食记录</a></li>
+    </ul>
+
+    <div class="content">
+        <h2 class="title">🐟 饲养员工作台</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🐼 负责动物数</h3>
+                <div class="count" id="animalCount">加载中...</div>
+            </div>
+            <div class="card">
+                <h3>📝 喂食记录数</h3>
+                <div class="count" id="recordCount">加载中...</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">我的喂食记录 🥕</h3>
+            <div id="myFeedingRecords">暂无喂食记录～ 快去添加吧！🐾</div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/keeper.js"></script>
+</body>
+</html>

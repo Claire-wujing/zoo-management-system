@@ -1,0 +1,128 @@
+/* 饲养员页面专属样式 */
+.count {
+    font-size: 48px;
+    font-weight: bold;
+    color: #9dd6ff;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(157,214,255,0.2);
+}
+
+.record-item {
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.record-item h4 {
+    color: #74c0ff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.record-item h4 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.record-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* ========== 核心：禁用所有转圈/动画 ========== */
+/* 1. 强制禁用loading转圈 */
+.loading {
+    width: auto !important;
+    height: auto !important;
+    border: none !important;
+    border-top: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    margin: 0 !important;
+}
+
+/* 2. 禁用spin转圈动画 */
+@keyframes spin {
+    0% { transform: none !important; }
+    100% { transform: none !important; }
+}
+
+/* 3. 禁用卡片hover动画 */
+.card {
+    transition: none !important;
+}
+.card:hover {
+    transform: none !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* 4. 禁用fade-in渐入动画 */
+.fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* 5. 禁用标题弹跳动画 */
+.title {
+    animation: none !important;
+}
+/* 核心：修改记录项为弹性布局，内容左对齐，按钮右对齐 */
+.record-item {
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    /* 新增弹性布局 */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* 记录内容区域：占满左侧空间 */
+.record-content {
+    flex: 1;
+}
+
+/* 按钮区域：垂直排列，靠右 */
+.record-actions {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    gap: 8px; /* 按钮之间的间距 */
+}
+
+/* 按钮样式微调（可选） */
+.record-actions .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    width: 80px; /* 固定按钮宽度，美观统一 */
+}
+
+/* 保持原有标题和段落样式不变 */
+.record-item h4 {
+    color: #74c0ff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.record-item h4 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+.record-item p {
+    margin: 5px 0;
+    color: #666;
+}

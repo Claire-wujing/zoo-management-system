@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员首页 - 森屿动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 园长！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<!-- 主体内容 -->
+<div class="main">
+    <!-- 侧边栏 -->
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="animal-manage.html"><img src="../../images/icons/animal.png" alt="动物管理"> 动物管理</a></li>
+        <li><a href="park-manage.html"><img src="../../images/icons/park.png" alt="园区管理"> 园区管理</a></li>
+        <li><a href="user-manage.html"><img src="../../images/icons/user.png" alt="用户管理"> 用户管理</a></li>
+    </ul>
+
+    <!-- 内容区 -->
+    <div class="content">
+        <h2 class="title">🏡 管理员控制台</h2>
+
+        <!-- 数据统计卡片 -->
+        <div class="grid">
+            <div class="card fade-in" style="animation-delay: 0.1s;">
+                <h3>🐼 动物总数</h3>
+                <div class="count" id="animalCount">加载中...</div>
+            </div>
+            <div class="card fade-in" style="animation-delay: 0.2s;">
+                <h3>🏞️ 园区总数</h3>
+                <div class="count" id="parkCount">加载中...</div>
+            </div>
+            <div class="card fade-in" style="animation-delay: 0.3s;">
+                <h3>👥 用户总数</h3>
+                <div class="count" id="userCount">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 最近添加的动物 -->
+        <div class="card fade-in" style="animation-delay: 0.4s;">
+            <h3 class="card-title">🐾 最近添加的动物</h3>
+            <div id="recentAnimals" class="loading">加载中...</div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

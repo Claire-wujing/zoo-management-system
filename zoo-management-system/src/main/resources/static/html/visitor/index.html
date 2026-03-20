@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游客首页 - 森屿动物园</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/visitor.css">
+</head>
+<body>
+<!-- 背景装饰元素 -->
+<div class="bg-decor">
+    <div class="decor-item paw1"><i class="fas fa-paw"></i></div>
+    <div class="decor-item leaf1"><i class="fas fa-leaf"></i></div>
+    <div class="decor-item flower1"><i class="fas fa-flower"></i></div>
+    <div class="decor-item seedling1"><i class="fas fa-seedling"></i></div>
+</div>
+
+<!-- 图片放大预览层 -->
+<div class="image-preview" id="imagePreview">
+    <span class="preview-close"><i class="fas fa-times"></i></span>
+    <img src="" alt="预览图" class="preview-img">
+</div>
+
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 小朋友！🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 动物园首页</a></li>
+        <li><a href="zoo-guide.html"><img src="../../images/icons/map.png" alt="园区导览"> 园区导览</a></li>
+    </ul>
+
+    <div class="content">
+        <!-- 核心布局：轮播图左 + 动物列表右 -->
+        <div class="main-content-wrapper">
+            <!-- 左侧轮播图 -->
+            <div class="carousel-wrapper">
+                <div class="carousel fade-in">
+                    <img src="../../images/animal/tuantuan.jpg" alt="大熊猫" class="carousel-img active zoom-img">
+                    <img src="../../images/animal/bingbing.jpg" alt="小企鹅" class="carousel-img zoom-img">
+                    <img src="../../images/animal/zhuangzhuang.jpg" alt="长颈鹿" class="carousel-img zoom-img">
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                    <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="animals-list-wrapper">
+                <h2 class="title">🐼 可爱动物们
+                    <div class="title-decor">
+                        <i class="fas fa-paw"></i>
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </h2>
+                <!-- 横向滚动容器 -->
+                <div class="animals-horizontal-scroll" id="animalGrid">
+                    <!-- JS加载动物卡片 -->
+                    <div class="loading-horizontal">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>加载可爱动物中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/visitor.js"></script>
+</body>
+</html>

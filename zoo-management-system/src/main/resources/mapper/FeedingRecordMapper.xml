@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoo.mapper.FeedingRecordMapper">
+    <!-- 根据饲养员ID查询喂食记录 -->
+    <select id="selectByKeeperId" resultType="com.zoo.entity.FeedingRecord">
+        SELECT * FROM `feeding_record` WHERE keeper_id = #{keeperId} ORDER BY feed_time DESC
+    </select>
+    <!-- 根据动物ID查询喂食记录 -->
+    <select id="selectByAnimalId" resultType="com.zoo.entity.FeedingRecord">
+        SELECT * FROM `feeding_record` WHERE animal_id = #{animalId} ORDER BY feed_time DESC
+    </select>
+</mapper>

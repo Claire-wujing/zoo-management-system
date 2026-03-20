@@ -1,0 +1,268 @@
+/* 管理员页面专属样式 - 适配饲养员页面浅蓝色主题 */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    /* 替换为浅蓝色系标题 */
+    color: #74c0ff;
+    margin-bottom: 20px;
+    font-size: 22px;
+    /* 浅蓝底边框，替换原有粉色 */
+    border-bottom: 2px solid #f0f8ff;
+    padding-bottom: 10px;
+    /* 禁用标题动画（对齐饲养员页面） */
+    animation: none !important;
+}
+
+/* 列表样式 - 替换为浅蓝色主题 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    /* 浅灰色边框，保持简洁 */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.table th {
+    /* 浅蓝背景，替换原有粉色 */
+    background-color: #f0f8ff;
+    /* 浅蓝色文字，替换原有粉色 */
+    color: #74c0ff;
+    font-weight: bold;
+}
+
+.table tr:hover {
+    /* 浅蓝hover背景，替换原有粉色 */
+    background-color: #f8fcff;
+    /* 禁用tr hover动画（对齐饲养员页面） */
+    transition: none !important;
+}
+
+.table .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    margin: 0 3px;
+    /* 按钮固定宽度，对齐饲养员页面 */
+    width: 80px;
+    /* 禁用按钮动画 */
+    transition: none !important;
+}
+.table .btn.btn-primary {
+    width: 70px;
+    background-color: #74c0ff;
+    border: none;
+    color: white;
+}
+.table .btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0.9;
+}
+
+.count {
+    font-size: 48px;
+    font-weight: bold;
+    /* 替换为饲养员页面的浅蓝色 */
+    color: #9dd6ff;
+    text-align: center;
+    margin: 20px 0;
+    /* 浅蓝阴影，替换原有粉色 */
+    text-shadow: 2px 2px 4px rgba(157,214,255,0.2);
+}
+
+/* ========== 核心：同步饲养员页面 - 禁用所有转圈/动画 ========== */
+/* 1. 强制禁用loading转圈 */
+.loading {
+    width: auto !important;
+    height: auto !important;
+    border: none !important;
+    border-top: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    margin: 0 !important;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+/* 2. 禁用spin转圈动画 */
+@keyframes spin {
+    0% { transform: none !important; }
+    100% { transform: none !important; }
+}
+
+/* 3. 禁用卡片hover动画 */
+.card {
+    transition: none !important;
+    /* 同步饲养员页面卡片背景 */
+    background-color: #ffffff !important;
+    border-radius: 15px !important;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.card:hover {
+    transform: none !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* 4. 禁用fade-in渐入动画 */
+.fade-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* 5. 禁用标题弹跳动画 */
+.title {
+    animation: none !important;
+    /* 标题颜色同步浅蓝色 */
+    color: #74c0ff !important;
+    margin-bottom: 20px;
+}
+
+/* ========== 补充：管理员页面新增记录项样式（对齐饲养员页面） ========== */
+/* 若管理员页面也有记录项，同步样式 */
+.record-item {
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    /* 弹性布局，内容左对齐，按钮右对齐 */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    /* 禁用动画 */
+    transition: none !important;
+}
+
+/* 记录内容区域：占满左侧空间 */
+.record-content {
+    flex: 1;
+}
+
+/* 按钮区域：垂直排列，靠右 */
+.record-actions {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    gap: 8px; /* 按钮之间的间距 */
+}
+
+/* 按钮样式微调 */
+.record-actions .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    width: 80px; /* 固定按钮宽度，美观统一 */
+    /* 禁用按钮动画 */
+    transition: none !important;
+}
+
+/* 记录项标题样式 */
+.record-item h4 {
+    color: #74c0ff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    /* 禁用标题动画 */
+    animation: none !important;
+}
+.record-item h4 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+.record-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* 最近添加的动物卡片样式 */
+#recentAnimals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0;
+    min-height: 150px;
+}
+.animal-card {
+    width: 200px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #f0f8ff;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+.animal-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.animal-card h3 {
+    color: #74c0ff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.animal-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+#recentAnimals p {
+    color: #666;
+    font-size: 16px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* 表单样式补充 */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-weight: 500;
+}
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e8ff;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.input:focus {
+    outline: none;
+    border-color: #74c0ff;
+    box-shadow: 0 0 0 2px rgba(116, 192, 255, 0.2);
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.btn-primary {
+    background-color: #ff9bb3;
+    color: white;
+}
+.btn-secondary {
+    background-color: #74c0ff;
+    color: white;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喂食记录 - 森屿动物园管理系统</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/keeper.css">
+    <style>
+        /* 新增：编辑弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .modal-close {
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+        }
+        .modal-close:hover {
+            color: #ff6b8b;
+        }
+        /* 新增：操作按钮组样式 */
+        .record-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .record-actions .btn {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        /* 新增：筛选栏样式 */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-bar .input {
+            flex: 1;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../../images/logo.png" alt="logo">
+        <span>森屿动物园管理系统</span>
+    </div>
+    <ul class="nav-menu">
+        <li><span>欢迎你，<span id="nickname"></span> 🐾</span></li>
+        <li><button class="btn btn-secondary btn-logout">退出登录</button></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <ul class="sidebar sidebar-menu">
+        <li><a href="index.html"><img src="../../images/icons/home.png" alt="首页"> 首页</a></li>
+        <li><a href="feeding-record.html"><img src="../../images/icons/feed.png" alt="喂食记录"> 喂食记录</a></li>
+    </ul>
+
+    <div class="content">
+        <h2 class="title">🐟 喂食记录管理</h2>
+
+        <!-- 新增记录表单 -->
+        <div class="card">
+            <h3 class="card-title">添加喂食记录 🥕</h3>
+            <form id="addFeedingForm">
+                <input type="hidden" id="keeperId" value="">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>选择动物</label>
+                        <select name="animalId" class="input" required id="animalSelect">
+                            <option value="">选择要喂食的动物</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>喂食食物</label>
+                        <input type="text" name="food" class="input" placeholder="比如：新鲜竹笋" required>
+                    </div>
+                    <div class="form-group">
+                        <label>喂食时间</label>
+                        <input type="datetime-local" name="feedTime" class="input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <textarea name="note" class="input" rows="2" placeholder="动物进食情况～"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">提交记录 🐾</button>
+            </form>
+        </div>
+
+        <!-- 记录列表 + 筛选功能 -->
+        <div class="card">
+            <h3 class="card-title">历史喂食记录 📝</h3>
+
+            <!-- 新增：筛选栏 -->
+            <div class="filter-bar">
+                <select id="filterAnimal" class="input">
+                    <option value="">全部动物</option>
+                </select>
+                <input type="datetime-local" id="filterStartTime" class="input" placeholder="开始时间">
+                <input type="datetime-local" id="filterEndTime" class="input" placeholder="结束时间">
+                <button class="btn btn-secondary" id="btnFilter">筛选</button>
+                <button class="btn btn-secondary" id="btnResetFilter">重置</button>
+            </div>
+
+            <!-- 记录列表容器 -->
+            <div id="feedingRecordList">暂无喂食记录～ 快去添加吧！🐾</div>
+        </div>
+    </div>
+</div>
+
+<!-- 新增：编辑记录弹窗 -->
+<div class="modal" id="editModal">
+    <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <h3 style="margin-top: 0;">编辑喂食记录 📝</h3>
+        <form id="editFeedingForm">
+            <input type="hidden" id="editRecordId" value=""> <!-- 存储要编辑的记录ID -->
+            <input type="hidden" id="editKeeperId" value="">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>选择动物</label>
+                    <select name="animalId" class="input" required id="editAnimalSelect">
+                        <option value="">选择要喂食的动物</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>喂食食物</label>
+                    <input type="text" name="food" class="input" placeholder="比如：新鲜竹笋" required id="editFood">
+                </div>
+                <div class="form-group">
+                    <label>喂食时间</label>
+                    <input type="datetime-local" name="feedTime" class="input" required id="editFeedTime">
+                </div>
+                <div class="form-group">
+                    <label>备注</label>
+                    <textarea name="note" class="input" rows="2" placeholder="动物进食情况～" id="editNote"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">保存修改 🐾</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/keeper.js"></script>
+</body>
+</html>
